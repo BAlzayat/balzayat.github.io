@@ -1,0 +1,118 @@
+:root {
+	--color-bg: #fff;
+	--color-main-bg: #eee;
+	--color-nav-bg: #ccc;
+	--color-nav-hover: #aaa;
+	--color-nav-selected: #aa5;
+	--color-demo-bg: #aaa;
+	--color-pre-bg: #ddd;
+	--obacity-demo: 0.8;
+}
+
+body{
+	background: var(--color-bg);
+}
+
+main{
+	background: var(--color-main-bg);
+	margin: 1%;
+	padding: 1%;
+}
+
+header {
+	text-align: center;
+	margin: 1%;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+header h1 {
+	margin: 0;
+}
+
+footer {
+	text-align: center;
+	margin: 1%;
+}
+
+nav{
+	background: var(--color-nav-bg);
+	margin-left: 1%;
+	margin-right: 1%;
+	display: flex;
+}
+
+nav a {
+	display: block;
+	padding: .5em;
+	text-decoration: none;
+	color: black;
+}
+
+nav a:hover {
+	background: var(--color-nav-hover);
+}
+
+#current {
+	background: var(--color-nav-selected);
+}
+
+.demo_list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.demo_container {
+	padding: 5%;
+	display: inline-grid;
+	flex: 1;
+	justify-content: center;
+}
+
+.demo_link {
+	text-decoration: none;
+	text-align: center;
+	width: fit-content;
+}
+
+.demo_link:hover {
+	background: var(--color-demo-bg);
+	opacity: var(--obacity-demo);
+}
+
+.canvas_container {
+	display: flex;
+	justify-content: center;
+}
+
+main p {
+	margin: 4%;
+	margin-bottom: 0;
+	margin-top: 0;
+	
+	padding-bottom: 2%;
+}
+
+main h1{
+	margin-top: 0;
+}
+
+.description {
+	display: inline-grid;
+	justify-content: center;
+	margin: 4%;
+}
+
+.description p {
+	margin: 0;
+}
+
+pre {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	background: var(--color-pre-bg);
+	padding: 2%;
+	margin: 4%;
+	margin-top: 0;
+	margin-bottom: 0;
+}

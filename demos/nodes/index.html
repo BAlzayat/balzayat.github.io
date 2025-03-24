@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang=en-us>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAlzayat - Nodes</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+	
+<body>
+	<header>
+		<h1>BAlzayat</h1>
+	</header>
+	<nav>
+		<a href="/index.html">Home</a>
+		<a href="/demos.html">Demos</a>
+	</nav>
+	
+	<main>
+		<h1>Nodes SDL2/emscripten Demo</h1>
+		
+		<div class="canvas_container">
+			<canvas id="canvas" width="500" height="500"></canvas>
+		</div>
+		<script type='text/javascript'>
+			var canvas = document.getElementById('canvas');
+			canvas.width  = window.innerWidth * 0.75;
+			canvas.height = window.innerHeight * 0.75;
+			
+			var Module = {
+				canvas: (function() {return canvas;})()
+			};
+		</script>
+		<script src=nodes.js></script>
+		<div class="description">
+			<p>Libraries used: SDL2, SDL2_gfx, stb_image, emscripten.</p>
+			<p>Controls:</p>
+			<ul>
+				<li>Click on a node to select it. Click and drag to move it around</li>
+				<li>Once a node is selected, click anywhere to insert a node connected to the selected node, if an existing node is clicked, a new directed segment is inserted.</li>
+				<li>Press delete on a selected node to delete it</li>
+			</ul>
+		</div>
+    </main>
+    <footer>This website is still under construction.</footer>
+</body>
+</html>
+		
