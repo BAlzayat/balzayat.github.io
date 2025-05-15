@@ -116,3 +116,12 @@ pre {
 	margin-top: 0;
 	margin-bottom: 0;
 }
+
+#loading {
+	text-align: center;
+}
+
+.scale_menu {
+	padding: 10px;
+	text-align: center;
+}
