@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang=en-us>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAlzayat - Pegs</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+	
+<body>
+	<header>
+		<h1>BAlzayat</h1>
+	</header>
+	<nav>
+		<a href="/index.html">Home</a>
+		<a href="/demos.html">Demos</a>
+	</nav>
+	
+	<main>
+		<h1>Pegs</h1>
+		
+		<p id="loading"> Loading... </p>
+		<div class="canvas_container">
+			<canvas id="canvas" width="500" height="500"></canvas>
+		</div>
+		
+		<script type='text/javascript'>
+			var canvas = document.getElementById('canvas');
+			var loadingElement = document.getElementById('loading');
+
+			var Module = {
+				canvas: (function() {return canvas;})(),
+				setStatus(text) {
+					console.log(text);
+					if (text === 'Running...'){
+						loadingElement.hidden = true;
+					}
+				}
+			};
+			
+		</script>
+		<script src=pegs.js></script>
+
+		<div class="description">
+			<p>A little demo to get a feel for 3blue1brown's <a href="https://www.youtube.com/watch?v=rYyJm1tD3d0">jumping pegs puzzle</a>. Can you move a peg to the purple square?</p>
+			<p>Controls:</p>
+			<ul>
+				<li>Click on the peg you want to move then click on the peg to jump over.</li>
+				<li>Use WASD keys to move the camera if the pegs are out of view</li>
+			</ul>
+		</div>
+    </main>
+    <footer>This website is still under construction.</footer>
+</body>
+</html>
