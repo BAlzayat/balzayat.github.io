@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating a LaTeX powered blog inspired by LMFDB - Part 1 - BAlzayat</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header><h1>BAlzayat</h1></header>
+    
+    <nav>
+        <a href="/" >Home</a>
+        <a href="/demos/" >Demos</a>
+        <a href="/blog/" id="current">Blog</a>
+    </nav>
+    <main>
+        <h1>Creating a LaTeX powered blog inspired by LMFDB - Part 1</h1>
+<p>I had the task of creating a blog in the back of my mind for a while now. What finally got me to do it is being recently told about <a href="lmfdb.org">LMFDB</a>. In this post I'm going to talk about the details (the first of hopefully two parts) of how I added new functionality to this site. (The code for this functionality is left as an exercise for the reader)</p>
+<p>Before this, all the pages of this website were created manually. As it seemed to me using a site generator would've taken more time than typing the HTML by hand. This changes if I want to add a blog.</p>
+<p>There are plenty of site generators available, but I decided to create my own. That way, it'll be easier to use and customize to my needs. At the moment, all it is is a simple python script that takes this directory structure</p>
+<pre>
+.
+├── blog
+│   └── 2026-10-23-latex.md
+├── demos
+│   ├── hbench
+│   │   ├── hbenchmark.js
+│   │   ├── hbenchmark.wasm
+│   │   ├── index.md
+│   │   ├── override.html
+│   │   └── sc.png
+│   ├── nodes
+│   │   ├── index.md
+│   │   ├── nodes.js
+│   │   ├── nodes.wasm
+│   │   └── sc.png
+│   └── pegs
+│       ├── index.md
+│       ├── pegs.js
+│       ├── pegs.wasm
+│       └── sc.png
+├── index.md
+└── style.css
+</pre>
+
+<p>and turns it into this</p>
+<pre>
+.
+├── blog
+│   ├── index.html
+│   └── latex.html
+├── demos
+│   ├── hbench
+│   │   ├── hbenchmark.js
+│   │   ├── hbenchmark.wasm
+│   │   ├── index.html
+│   │   └── sc.png
+│   ├── index.html
+│   ├── nodes
+│   │   ├── index.html
+│   │   ├── nodes.js
+│   │   ├── nodes.wasm
+│   │   └── sc.png
+│   └── pegs
+│       ├── index.html
+│       ├── pegs.js
+│       ├── pegs.wasm
+│       └── sc.png
+├── index.html
+├── style.css
+└── tex
+    ├── 1.svg
+    ├── 2.svg
+    ├── 3.svg
+    ├── 4.svg
+    └── tex.db
+</pre>
+
+<p>the content of each HTML file is clear from the directory structure.</p>
+<p>As for including LaTeX, the simplest solution might've been using <a href="https://mathjax.org">MathJax</a> or <a href="https://katex.org">KaTeX</a>. I decided to pre-render the math to SVG instead, because it'll work without javascript, be faster to load (for small pages, which are likely to be all the pages of this site), and be more accessible to simpler browsers (like netsurf) where MathJax and KaTeX don't work.</p>
+<p>The <code>tex.db</code> file is not necessary for the website to work, only during generation, it has all the TeX formulas in the site along with the corresponding SVG file (encoded in the row id) and the image dimensions. It works as a cache table to reduce the size and rendering time and prevents file name collisions. There's no harm in including it so I decided to keep it. Download it if you're curious.</p>
+<p>As for creating the SVGs themselves, I'm using this <a href="https://github.com/Moonbase59/latex2svg/">latex2svg</a> python module. It's simple enough and works perfectly.</p>
+<p>The TeX generating each SVG is included in its alt text, so the site is perfectly viewable in a text only browser. I initially thought this wouldn't work with dark mode but then I found out about the css invert filter, so it works fine. For static sites, this, in my opinion, is the superior way to include LaTeX.</p>
+    </main>
+    <footer>This website is still under construction.</footer>
+</body>
+</html>

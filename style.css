@@ -1,19 +1,42 @@
 :root {
 	--color-bg: #fff;
-	--color-main-bg: #eee;
+	--color-main-bg: #e5e5e5;
 	--color-nav-bg: #ccc;
 	--color-nav-hover: #aaa;
-	--color-nav-selected: #aa5;
+	--color-nav-selected: #a90;
 	--color-demo-bg: #aaa;
 	--color-pre-bg: #ddd;
-	--obacity-demo: 0.8;
+	--color-text: #222;
+	--color-link: #44f;
+	--opacity-demo: 0.8;
 }
 
-body{
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-bg: #121212;
+		--color-main-bg: #1e1e1e;
+		--color-nav-bg: #2d2d2d;
+		--color-nav-hover: #3d3d3d;
+		--color-nav-selected: #a90;
+		--color-demo-bg: #333333;
+		--color-pre-bg: #252525;
+		--color-text: #e0e0e0;
+		--color-link: #474;
+		--opacity-demo: 0.8;
+	}
+
+	.math_display, .math_inline {
+		filter: invert(100%) hue-rotate(180deg);
+	}
+}
+
+
+body {
 	background: var(--color-bg);
+	color: var(--color-text);
 }
 
-main{
+main {
 	background: var(--color-main-bg);
 	margin: 1%;
 	padding: 1%;
@@ -35,7 +58,11 @@ footer {
 	margin: 1%;
 }
 
-nav{
+a {
+	color: var(--color-link);
+}
+
+nav {
 	background: var(--color-nav-bg);
 	margin-left: 1%;
 	margin-right: 1%;
@@ -46,7 +73,7 @@ nav a {
 	display: block;
 	padding: .5em;
 	text-decoration: none;
-	color: black;
+	color: var(--color-text);
 }
 
 nav a:hover {
@@ -93,7 +120,7 @@ main p {
 	padding-bottom: 2%;
 }
 
-main h1{
+main h1 {
 	margin-top: 0;
 }
 
@@ -124,4 +151,10 @@ pre {
 .scale_menu {
 	padding: 10px;
 	text-align: center;
+}
+
+.math_display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
