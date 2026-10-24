@@ -134,6 +134,10 @@ main h1 {
 	margin: 0;
 }
 
+p {
+	line-height: 1.65;
+}
+
 pre {
 	white-space: pre-wrap;
 	word-wrap: break-word;
@@ -154,7 +158,14 @@ pre {
 }
 
 .math_display {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: block;
+	width: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.math_display img {
+	max-width: none;
+	display: block;
+	margin: 0 auto;
 }
