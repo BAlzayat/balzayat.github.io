@@ -8,6 +8,8 @@
 	--color-pre-bg: #ddd;
 	--color-text: #222;
 	--color-link: #44f;
+	--color-border: #777;
+	--color-def-open-bg: #ccc;
 	--opacity-demo: 0.8;
 }
 
@@ -22,6 +24,8 @@
 		--color-pre-bg: #252525;
 		--color-text: #e0e0e0;
 		--color-link: #474;
+		--color-border: #555;
+		--color-def-open-bg: #333;
 		--opacity-demo: 0.8;
 	}
 
@@ -104,7 +108,7 @@ nav a:hover {
 
 .demo_link:hover {
 	background: var(--color-demo-bg);
-	opacity: var(--obacity-demo);
+	opacity: var(--opacity-demo);
 }
 
 .canvas_container {
@@ -168,4 +172,69 @@ pre {
 	max-width: none;
 	display: block;
 	margin: 0 auto;
+}
+
+.def_list {
+	margin: 4%;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 15px;
+}
+
+.def_entry {
+	background: var(--color-main-bg);
+	text-align: center;
+	border: 1px solid;
+}
+
+.def_entry a {
+	display: block;
+	width: 100%;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.def_entry a:hover{
+	background: var(--color-demo-bg);
+	opacity: var(--opacity-demo);
+}
+
+.blog_list {
+	display: flex;
+	flex-direction: column;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.blog_entry {
+	padding: .2em 0;
+	display: flex;
+	align-items: baseline;
+}
+
+.blog_date {
+	margin-right: 15px;
+	white-space: nowrap;
+}
+
+.def_popup{
+	margin-left: 4%;
+	margin-right: 4%;
+	margin-bottom: 1%;
+	padding-left: 2%;
+	border: solid var(--color-border);
+}
+
+a.definition {
+	text-decoration-thickness: 1.5px;
+	text-underline-offset: 5px;
+}
+
+a.open {
+	background: var(--color-def-open-bg);
+}
+
+blockquote {
+	border-left: solid 2px var(--color-border);
 }

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating a LaTeX powered blog inspired by LMFDB - Part 2 - BAlzayat</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header><h1>BAlzayat</h1></header>
+    
+    <nav>
+        <a href="/">Home</a>
+        <a href="/demos/">Demos</a>
+        <a href="/blog/" id="current">Blog</a>
+        <a href="/defs/">Knowledge</a>
+    </nav>
+    <main>
+        <h1>Creating a LaTeX powered blog inspired by LMFDB - Part 2</h1>
+<p>In a <a href="/blog/latex.html">previous post</a>, I talked about creating a site generator with LaTeX support. Here, I talk about the <a href="https://lmfdb.org">LMFDB</a> feature that got me to start doing this in the first place, its <a href="https://www.lmfdb.org/knowledge/">knowledge database</a>.</p>
+<p>On the LMFDB, you will find underlined words, clicking on such a word brings a popup with its definition and relevant information. They call them <em>knowls</em>. I'll call them definitions instead.</p>
+<p>I can think of many ways to implement them. The simplest way, and in my mind the best, is to do something similar to what I did previously with LaTeX. Like before, I'll illustrate how it's implemented by showing what the script does to the directory structure. It goes from this</p>
+<pre>
+<code>
+.
+├── blog
+│   └── 2026-10-23-discriminant.md
+├── defs
+│   ├── pid.md
+│   └── ufd.md
+├── defs_replace.js
+├── demos
+│   └── ...
+├── index.md
+└── style.css
+</code>
+</pre>
+
+<p>to this</p>
+<pre>
+<code>
+.
+├── blog
+│   ├── index.html
+│   └── latex.html
+├── defs
+│   ├── def
+│   │   ├── pid.html
+│   │   └── ufd.html
+│   ├── defs.db
+│   ├── index.html
+│   └── min
+│       ├── pid.html
+│       └── ufd.html
+├── defs_replace.js
+├── demos
+│   └── ...
+├── index.html
+├── style.css
+└── tex
+    └── ...
+</code>
+</pre>
+
+<p>The content of <code>pid.md</code> would be</p>
+<pre>
+<code>
+Display: PID
+Title: Principal Ideal Domain
+
+A Principal Ideal Domain is a \def{ring} in which every \def{ideal} is \def{principal ideal, principal}.
+</code>
+</pre>
+
+<p>Which works with LaTeX just fine</p>
+<pre>
+<code>
+Since $\mathbb Z$ is a \def{pid}, it's also a \def{ufd}.
+</code>
+</pre>
+
+<p>gives</p>
+<blockquote>
+<p>Since <span class="math_inline"><img src="/tex/71.svg" style="width:0.86em;height:0.93em;vertical-align:0.00em" alt="$\mathbb Z$"></span> is a <a href="/defs/def/pid.html" class="definition">PID</a>, it's also a <a href="/defs/def/ufd.html" class="definition">UFD</a>.</p>
+</blockquote>
+<p>If you have javascript disabled, what you will get is a link to the definition page. With javascript, clicking on the link will open a popup at the end of the paragraph, similar to how it works on LMFDB. The javascript file for turning the links into popups is only loaded on pages that have definitions. Instead of loading <code>/defs/def/pid.html</code>, the script loads <code>/defs/min/pid.html</code>, which contains no html boilerplate, saving some (small) bandwidth. Like LMFDB, if a definition is contained multiple times in a document, it will be loaded at most once.</p>
+<p>All the definitions in the site are listed on the <a href="/defs">knowledge</a> tab. Along with a <code>defs.db</code> file, which could be out of sync because of how the site generator code is right now.</p>
+<p>With that done I'm not sure if this feature would be as useful as LaTeX support is for this blog. While this implementation leaves much to be desired compared to LMFDB's, it (along with much of this site) doesn't require javascript to function. Something I hope to see more often.</p>
+    </main>
+    <footer>This website is still under construction.</footer>
+    <script src="/defs_replace.js"></script>
+</body>
+</html>

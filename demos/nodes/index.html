@@ -10,13 +10,14 @@
     <header><h1>BAlzayat</h1></header>
     
     <nav>
-        <a href="/" >Home</a>
+        <a href="/">Home</a>
         <a href="/demos/" id="current">Demos</a>
-        <a href="/blog/" >Blog</a>
+        <a href="/blog/">Blog</a>
+        <a href="/defs/">Knowledge</a>
     </nav>
     <main>
         <h1>Nodes SDL2/emscripten Demo</h1>
-
+        
         <p id="loading"> Loading... </p>
         <div class="canvas_container">
             <canvas id="canvas" width="500" height="500"></canvas>
@@ -35,16 +36,18 @@
             };
         </script>
         <script src="nodes.js"></script>
+        
         <div class="description">
-<p>Libraries used: SDL2, SDL2_gfx, stb_image, emscripten.</p>
+                <p>Libraries used: SDL2, SDL2_gfx, stb_image, emscripten.</p>
 <p>Controls:</p>
 <ul>
 <li>Click on a node to select it. Click and drag to move it around</li>
 <li>Once a node is selected, click anywhere to insert a node connected to the selected node, if an existing node is clicked, a new directed segment is inserted.</li>
 <li>Press delete on a selected node to delete it</li>
 </ul>
-</div>
+        </div>
     </main>
     <footer>This website is still under construction.</footer>
+    
 </body>
 </html>
