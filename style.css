@@ -238,3 +238,9 @@ a.open {
 blockquote {
 	border-left: solid 2px var(--color-border);
 }
+
+.site_title {
+	font-size: 2em;
+	font-weight: bold;
+	margin: 0;
+}
